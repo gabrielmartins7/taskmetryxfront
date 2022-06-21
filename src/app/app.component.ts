@@ -11,11 +11,14 @@ export class AppComponent {
   constructor(private dataService: DataService) {}
   companies = [];
 
-  click() {
-    this.dataService.sendGetRequest().subscribe((data: any[]) => {
-      console.log(data);
-      this.companies = data;
+  async click() {
+    let response = await new Promise((resolve) => {
+      this.dataService.sendGetRequest().subscribe((data: any[]) => {
+        this.companies = data;
+        resolve(this.companies);
+      });
     });
+    return response;
   }
   candidate = "Candidato 1";
 }

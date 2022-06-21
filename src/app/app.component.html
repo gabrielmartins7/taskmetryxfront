@@ -504,8 +504,9 @@
       GET COMPANIES
     </button>
   </div>
-  <li *ngFor="let company of companies">
-    <p>{{ company.name }}</p>
+  <li *ngFor="let company of companies" id="list_company">
+    <p>Company: {{ company.name }}</p>
+    <p>Segment: {{ company.segment }}</p>
   </li>
 
   <!-- Next Steps -->

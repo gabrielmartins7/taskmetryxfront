@@ -12,8 +12,12 @@ describe("Test to be fulfilled by the candidate", () => {
     cy.get("#get_companies")
       .click()
       .then((response) => {
-        cy.log(response);
-        /* expect(response.status).to.equal(200); */
-      }); /* expect(true).to.equal(false); */ //replace me !
+        cy.get("#list_company")
+          .children()
+          .then((response_list) => {
+            cy.log(response_list.text());
+            expect(response.text()).to.not.equal(null);
+          });
+        expect(response).to.not.equal(null);
   });
 });
